@@ -7,14 +7,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./signup-page.component.scss']
 })
 export class SignupPageComponent implements OnInit {
-
+  // Get the signup data form localstorage if present
   formCache:any = localStorage.signupForm ? JSON.parse(localStorage.signupForm) : null;
 
   constructor() { }
 
   ngOnInit() {
-
-    this.signupForm.valueChanges. subscribe(form => { // Subscribe to the changes in the forms value
+    // Subscribe to the changes in the forms value
+    this.signupForm.valueChanges. subscribe(form => {
       // Save the formdata in localstorage to be used if user does not complete registration
       localStorage.setItem('signupForm', JSON.stringify(form));
     });
@@ -34,7 +34,7 @@ export class SignupPageComponent implements OnInit {
   // Setting up the form and validators
   signupForm = new FormGroup({
     mail: new FormControl(          // Each input is defined as a new form control
-      this.formCache.mail,                           // The initial value of the input can be set here
+      this.formCache.mail,          // The initial value of the input se set here
       Validators.compose([          // The compose function is used to add multiple validators to one field
           Validators.required,      // This field is required
           Validators.email          // Ads the angualr default email validatitor
