@@ -8,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupPageComponent implements OnInit {
 
+  formCache:any = localStorage.signupForm ? JSON.parse(localStorage.signupForm) : null;
+
   constructor() { }
 
   ngOnInit() {
@@ -16,13 +18,15 @@ export class SignupPageComponent implements OnInit {
       // Save the formdata in localstorage to be used if user does not complete registration
       localStorage.setItem('signupForm', JSON.stringify(form));
     });
+
   }
 
   // This function is called when the sigunp form gets submitted!
   onSubmit(){
     if(this.signupForm.valid){
-
+      // @TODO send the form to the API! 
     }else{
+      // If somehow the form gets submitted while invalid show an error notification
       UIkit.notification("<span uk-icon='icon:  warning'></span> The form is not valid!", {status:'danger'});
     }
   }
@@ -30,14 +34,14 @@ export class SignupPageComponent implements OnInit {
   // Setting up the form and validators
   signupForm = new FormGroup({
     mail: new FormControl(          // Each input is defined as a new form control
-      '',                           // The initial value of the input can be set here
+      this.formCache.mail,                           // The initial value of the input can be set here
       Validators.compose([          // The compose function is used to add multiple validators to one field
           Validators.required,      // This field is required
           Validators.email          // Ads the angualr default email validatitor
       ])
     ),
     password: new FormControl(
-      '', 
+      this.formCache.password, 
       Validators.compose([
         Validators.required, 
         Validators.minLength(8),    // Defines a minumul length for the field
@@ -45,15 +49,15 @@ export class SignupPageComponent implements OnInit {
       ])
     )
     confirmPassword: new FormControl(
-      '', 
+      this.formCache.confirmPassword, 
       Validators.required         // The validation for confirm password is defined as the 3. parameter of the FormGorup function
     ),
     birthday: new FormControl(
-      '', 
+      this.formCache.birthday, 
       Validators.required         // Since this field only have one validator there is no need for the compose function
     ),
     firstname: new FormControl(
-      '', 
+      this.formCache.firstname, 
       Validators.compose([
         Validators.required, 
         Validators.minLength(2), 
@@ -61,7 +65,7 @@ export class SignupPageComponent implements OnInit {
       ])
     ),
     lastname: new FormControl(
-      '', 
+      this.formCache.lastname, 
       Validators.compose([
         Validators.required, 
         Validators.minLength(2),
@@ -69,7 +73,7 @@ export class SignupPageComponent implements OnInit {
       ])
     ),
     description: new FormControl(
-      '', 
+      this.formCache.description, 
       Validators.compose([
         Validators.required, 
         Validators.minLength(60), 

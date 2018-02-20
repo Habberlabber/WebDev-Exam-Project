@@ -21,7 +21,6 @@
           type="password" 
           placeholder="Password" 
           formControlName="password"
-          [class.uk-form-success]="signupForm.controls.password.valid"
           [class.uk-form-danger]=" !signupForm.controls.password.valid && signupForm.controls.password.touched "
         >
       </div>
@@ -32,7 +31,6 @@
           type="password" 
           placeholder="Repeat password" 
           formControlName="confirmPassword"
-          [class.uk-form-success]="signupForm.controls.confirmPassword.valid"
           [class.uk-form-danger]=" !signupForm.controls.confirmPassword.valid && signupForm.controls.confirmPassword.touched "
         >
       </div>
@@ -46,6 +44,7 @@
           type="date" 
           placeholder="Birthday" 
           formControlName="birthday"
+          [class.uk-form-success]="signupForm.controls.birthday.valid"
           [class.uk-form-danger]=" !signupForm.controls.birthday.valid && signupForm.controls.birthday.touched "
         >
       </div>
@@ -56,6 +55,7 @@
           type="text" 
           placeholder="Firstname" 
           formControlName="firstname"
+          [class.uk-form-success]="signupForm.controls.firstname.valid"
           [class.uk-form-danger]=" !signupForm.controls.firstname.valid && signupForm.controls.firstname.touched "
         >
       </div>
