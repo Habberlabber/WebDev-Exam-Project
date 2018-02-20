@@ -10,9 +10,14 @@ const routes: Routes = [
     component: SignupPageComponent
   },
   { 
-    path: '',
+    path: 'play',
     component: VotePageComponent
-  }
+  },
+  { 
+    path: '',
+    redirectTo: '/play',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
