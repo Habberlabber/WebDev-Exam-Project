@@ -2,42 +2,44 @@
   
   <div class="uk-card uk-card-body uk-card-default uk-width-large">
     <h3 class="uk-card-title uk-text-uppercase">Signup</h3>
-    <form class="uk-form-stacked uk-form-horizontal">
+    <form [formGroup]="signupForm" class="uk-form-stacked">
 
       <div class="uk-margin">
-        <input class="uk-input" type="mail" placeholder="E-mail">
+        <input class="uk-input" type="mail" placeholder="E-mail" formControlName="mail">
       </div>
 
       <div class="uk-margin">
-        <input class="uk-input" type="password" placeholder="Password">
+        <input class="uk-input" type="password" placeholder="Password" formControlName="password">
       </div>
 
       <div class="uk-margin">
-        <input class="uk-input" type="password" placeholder="Repeat password">
+        <input class="uk-input" type="password" placeholder="Repeat password" formControlName="passwordRepeat">
       </div>
 
       <hr class="uk-divider-icon">
 
       <div class="uk-margin">
         <label class="uk-form-label">Birthday</label>
-        <input class="uk-input" type="date" placeholder="Birthday">
+        <input class="uk-input" type="date" placeholder="Birthday" formControlName="birthday">
       </div>
 
       <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Firstname">
+        <input class="uk-input" type="text" placeholder="Firstname" formControlName="firstname">
       </div>
 
       <div class="uk-margin">
-        <input class="uk-input" type="text" placeholder="Lastname">
+        <input class="uk-input" type="text" placeholder="Lastname" formControlName="lastname">
       </div>
 
       <div class="uk-margin">
-        <textarea class="uk-textarea" rows="5" placeholder="Description"></textarea>
+        <textarea class="uk-textarea" rows="5" placeholder="Description" formControlName="description"></textarea>
       </div>
 
       <button class="uk-button uk-button-primary uk-width-1-1">Signup</button>
 
     </form>
+    <p>Form value: {{ signupForm.value | json }}</p>
+    <p>Form status: {{ signupForm.status | json }}</p>
   </div>
 
 </div>
