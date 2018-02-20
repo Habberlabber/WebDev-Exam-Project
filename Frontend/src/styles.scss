@@ -1,0 +1,27 @@
+/*
+|--------------------------------------------------------------------------
+| STYLES.SCSS
+|--------------------------------------------------------------------------
+|
+| This is the main SCSS file which imports all the styles in the project
+|
+*/
+
+// 1. Custom variables and variable overwrites.
+@import "styles/variables/variables.scss";
+
+// 2. Import default variables and available mixins.
+@import "../node_modules/uikit/src/scss/variables-theme.scss";
+@import "../node_modules/uikit/src/scss/mixins-theme.scss";
+
+// 3. Custom mixin overwrites.
+@import "styles/mixins/mixins.scss";
+
+// 4. Import UIkit theme.
+@import "../node_modules/uikit/src/scss/uikit-theme.scss";
+
+// 5. Import Custom icons
+//@import "styles/custom-icons.scss";
+
+// 6. Cusotm style Blocks
+@import "styles/blocks/blocks.scss";
