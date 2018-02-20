@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'WD-signup-page',
@@ -8,24 +8,79 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class SignupPageComponent implements OnInit {
 
-  signupForm: FormGroup; // Defien the formgroup
-
-  constructor(private fb: FormBuilder) {
-    this.createForm();
-  }
+  constructor() { }
 
   ngOnInit() {
+
+    this.signupForm.valueChanges. subscribe(form => { // Subscribe to the changes in the forms value
+      // Save the formdata in localstorage to be used if user does not complete registration
+      localStorage.setItem('signupForm', JSON.stringify(form));
+    });
   }
 
-  createForm() {
-    this.signupForm = this.fb.group({
-      mail: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(128)])]
-      passwordRepeat: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(128)])],
-      birthday: ['', Validators.required],
-      firstname: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(32)])],
-      lastname: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(32)])],
-      description: ['', Validators.compose([Validators.required, Validators.minLength(60), Validators.maxLength(255)])]
-    });
+  // This function is called when the sigunp form gets submitted!
+  onSubmit(){
+    if(this.signupForm.valid){
+
+    }else{
+      UIkit.notification("<span uk-icon='icon:  warning'></span> The form is not valid!", {status:'danger'});
+    }
+  }
+
+  // Setting up the form and validators
+  signupForm = new FormGroup({
+    mail: new FormControl(          // Each input is defined as a new form control
+      '',                           // The initial value of the input can be set here
+      Validators.compose([          // The compose function is used to add multiple validators to one field
+          Validators.required,      // This field is required
+          Validators.email          // Ads the angualr default email validatitor
+      ])
+    ),
+    password: new FormControl(
+      '', 
+      Validators.compose([
+        Validators.required, 
+        Validators.minLength(8),    // Defines a minumul length for the field
+        Validators.maxLength(128)   // Defines a max length for the field
+      ])
+    )
+    confirmPassword: new FormControl(
+      '', 
+      Validators.required         // The validation for confirm password is defined as the 3. parameter of the FormGorup function
+    ),
+    birthday: new FormControl(
+      '', 
+      Validators.required         // Since this field only have one validator there is no need for the compose function
+    ),
+    firstname: new FormControl(
+      '', 
+      Validators.compose([
+        Validators.required, 
+        Validators.minLength(2), 
+        Validators.maxLength(32)
+      ])
+    ),
+    lastname: new FormControl(
+      '', 
+      Validators.compose([
+        Validators.required, 
+        Validators.minLength(2),
+        Validators.maxLength(32)
+      ])
+    ),
+    description: new FormControl(
+      '', 
+      Validators.compose([
+        Validators.required, 
+        Validators.minLength(60), 
+        Validators.maxLength(255)
+      ])
+    )
+  }, passwordMatchValidator);
+
+  // Function used to validate the password and confirm password are equal
+  function passwordMatchValidator(g: FormGroup) {
+   return g.get('password').value === g.get('confirmPassword').value
+      ? null : {'mismatch': true};
   }
 }
