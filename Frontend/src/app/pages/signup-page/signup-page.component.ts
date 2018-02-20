@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'WD-signup-page',
@@ -10,7 +11,9 @@ export class SignupPageComponent implements OnInit {
   // Get the signup data form localstorage if present
   formCache:any = localStorage.signupForm ? JSON.parse(localStorage.signupForm) : null;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     // Subscribe to the changes in the forms value
@@ -25,6 +28,7 @@ export class SignupPageComponent implements OnInit {
   onSubmit(){
     if(this.signupForm.valid){
       // @TODO send the form to the API! 
+      this.router.navigate(['']); // Navigate to the main directory
     }else{
       // If somehow the form gets submitted while invalid show an error notification
       UIkit.notification("<span uk-icon='icon:  warning'></span> The form is not valid!", {status:'danger'});
