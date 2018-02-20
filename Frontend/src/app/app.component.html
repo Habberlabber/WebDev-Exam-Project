@@ -1,1 +1,68 @@
 <router-outlet></router-outlet>
+
+<button 
+  class="uk-icon-button uk-position-right uk-margin uk-margin-right" 
+  uk-icon="icon: menu"
+  uk-toggle="target: #offcanvas-nav"
+></button>
+
+<div id="offcanvas-nav" uk-offcanvas="overlay: true">
+  <div class="uk-offcanvas-bar">
+
+    <h3 routerLink="/play" class="uk-logo uk-text-uppercase">Rednit</h3>
+
+    <ul class="uk-nav uk-nav-default">
+      <li routerLinkActive="uk-active">
+        <a routerLink="/play">
+          <span class="uk-margin-small-right" uk-icon="icon: image"></span>
+          The game
+        </a>
+      </li>
+      <li routerLinkActive="uk-active">
+        <a routerLink="/conversations">
+          <span class="uk-margin-small-right" uk-icon="icon: comments"></span>
+          Conversations
+        </a>
+      </li>
+      <li routerLinkActive="uk-active">
+        <a routerLink="/bookmarks">
+          <span class="uk-margin-small-right" uk-icon="icon: bookmark"></span>
+          Bookmarks
+        </a>
+      </li>
+      <li routerLinkActive="uk-active">
+        <a routerLink="/settings">
+          <span class="uk-margin-small-right" uk-icon="icon: settings"></span>
+          Settings
+        </a>
+      </li>
+      <li class="uk-nav-header">Administration</li>
+      <li routerLinkActive="uk-active">
+        <a routerLink="/dashboard">
+          <span class="uk-margin-small-right" uk-icon="icon: desktop"></span>
+          Dashboard
+        </a>
+      </li>
+      <li routerLinkActive="uk-active">
+        <a routerLink="/users">
+          <span class="uk-margin-small-right" uk-icon="icon: table"></span>
+          User list
+        </a>
+      </li>
+      <li routerLinkActive="uk-active">
+        <a routerLink="/map">
+          <span class="uk-margin-small-right" uk-icon="icon: location"></span>
+          Map
+        </a>
+      </li>
+      <li class="uk-nav-divider"></li>
+      <li routerLinkActive="uk-active">
+        <a routerLink="/signup">
+          <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>
+          Sign out
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</div>
