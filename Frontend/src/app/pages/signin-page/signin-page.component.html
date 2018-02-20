@@ -1,3 +1,33 @@
-<p>
-  signin-page works!
-</p>
+<div class="uk-height-viewport uk-background-primary uk-flex uk-flex-center uk-flex-middle">
+
+  <div class="uk-card uk-card-body uk-card-default uk-width-large">
+    <h3 class="uk-card-title uk-text-uppercase">Signin</h3>
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="uk-form-stacked">
+
+      <div class="uk-margin">
+        <input 
+          class="uk-input" 
+          type="mail" 
+          placeholder="E-mail" 
+          formControlName="mail" 
+          [class.uk-form-success]="signinForm.controls.mail.valid"
+          [class.uk-form-danger]=" !signinForm.controls.mail.valid && signinForm.controls.mail.touched "
+        >
+      </div>
+
+      <div class="uk-margin">
+        <input 
+          class="uk-input" 
+          type="password" 
+          placeholder="Password" 
+          formControlName="password"
+          [class.uk-form-danger]=" !signinForm.controls.password.valid && signinForm.controls.password.touched "
+        >
+      </div>
+
+      <button class="uk-button uk-button-primary uk-width-1-1" [disabled]="!signinForm.valid">Signin</button>
+
+    </form>
+  </div>
+
+</div>
