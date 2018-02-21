@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   { 
     path: 'play',
-    component: SigninPageComponent
+    component: VotePageComponent
   },
   { 
     path: '',
