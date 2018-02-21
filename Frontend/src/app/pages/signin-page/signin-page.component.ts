@@ -18,7 +18,7 @@ export class SigninPageComponent implements OnInit {
 
   // This function is called when the signin form gets submitted!
   onSubmit(){
-    if(this.signupForm.valid){
+    if(this.signinForm.valid){
       // @TODO send the form to the API! 
       this.router.navigate(['']); // Navigate to the main directory
     }else{
