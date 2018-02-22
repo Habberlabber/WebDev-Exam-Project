@@ -1,29 +1,32 @@
 <div class="uk-card uk-card-default uk-card-small uk-width-medium">
-    <div class="uk-card-media-top">
-      <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true; ratio: 4:3">
+  <div class="uk-card-media-top">
+    <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true; ratio: 4:3">
 
-        <ul class="uk-slideshow-items">
-          <li *ngFor="let image of person.images">
-            <img src="{{image.url}}" alt="{{image.title}}" uk-cover>
-          </li>
-        </ul>
+      <ul class="uk-slideshow-items">
+        <li *ngFor="let image of person.images">
+          <img src="{{image.url}}" alt="{{image.title}}" uk-cover>
+          <div *ngIf="image.title" class="uk-padding-small uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+            <p class="uk-margin-remove">{{image.title}}</p>
+          </div>
+        </li>
+      </ul>
 
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+      <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+      <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
-      </div>
-    </div>
-    <div class="uk-card-body">
-      <h3 class="uk-card-title">
-        {{person.firstname}} {{person.lastname}} <small>({{person.age}})</small>
-      </h3>
-      <p>
-        {{person.desc}}
-      </p>
-    </div>
-    <div class="uk-card-footer uk-flex uk-flex-between">
-      <button class="uk-button uk-button-danger">EEEW!!</button>
-      <button class="uk-button uk-button-primary">YUP!</button>
     </div>
   </div>
+  <div class="uk-card-body">
+    <h3 class="uk-card-title">
+      {{person.firstname}} {{person.lastname}} <small>({{person.age}})</small>
+    </h3>
+    <p>
+      {{person.desc}}
+    </p>
+  </div>
+  <div class="uk-card-footer uk-flex uk-flex-between">
+    <button class="uk-button uk-button-danger">EEEW!!</button>
+    <button class="uk-button uk-button-primary">YUP!</button>
+  </div>
+</div>
 
