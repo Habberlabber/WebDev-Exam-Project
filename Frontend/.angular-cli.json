@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "WD",
       "styles": [
+        "../node_modules/mdi/css/materialdesignicons.min.css",
         "styles.scss"
       ],
       "scripts": [
