@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { VotePageComponent } from './pages/vote-page/vote-page.component';
 import { SigninPageComponent } from './pages/signin-page/signin-page.component';
+import { VoteCardComponent } from './pages/vote-page/vote-card/vote-card.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SigninPageComponent } from './pages/signin-page/signin-page.component';
     AppComponent,
     SignupPageComponent,
     VotePageComponent,
-    SigninPageComponent
+    SigninPageComponent,
+    VoteCardComponent
   ],
   imports: [
     BrowserModule,
