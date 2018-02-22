@@ -2,10 +2,14 @@
   <div class="uk-card-media-top">
     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true; ratio: 4:3">
 
-      <ul class="uk-slideshow-items">
+      <ul class="uk-slideshow-items" uk-lightbox="animation: slide">
         <li *ngFor="let image of person.images">
-          <img src="{{image.url}}" alt="{{image.title}}" uk-cover>
-          <div *ngIf="image.title" class="uk-padding-small uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+          <a class="uk-inline uk-height-1-1 uk-width-1-1" href="{{image.url}}" [attr.caption]="image.title">
+            <img src="{{image.url}}" alt="{{image.title}}" uk-cover>
+          </a>
+          <div 
+            *ngIf="image.title" 
+            class="uk-padding-small uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
             <p class="uk-margin-remove">{{image.title}}</p>
           </div>
         </li>
