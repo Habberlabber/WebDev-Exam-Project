@@ -1,3 +1,9 @@
 <div class="uk-height-viewport uk-background-muted uk-flex uk-flex-center uk-flex-middle">
-  Dashboard
+  
+  <div class="uk-margin-large-top uk-flex-center uk-width-1-1" uk-grid >
+    <div *ngFor="let bookmark of people">
+      <WD-vote-card [person]="bookmark"></WD-vote-card>
+    </div>
+  </div>
+
 </div>

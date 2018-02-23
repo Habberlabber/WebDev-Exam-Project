@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { SigninPageComponent } from './pages/signin-page/signin-page.component';
 import { VotePageComponent } from './pages/vote-page/vote-page.component';
+import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.component';
 
 const routes: Routes = [
   { 
@@ -18,10 +19,14 @@ const routes: Routes = [
     path: 'play',
     component: VotePageComponent
   },
+  { 
+    path: 'bookmarks',
+    component: BookmarksPageComponent
+  },
   {
-      path: 'admin',
-      loadChildren: './admin/admin.module#AdminModule',
-      data: { preload: true }
+    path: 'admin',
+    loadChildren: './admin/admin.module#AdminModule',
+    data: { preload: true }
    },
   { 
     path: '',
