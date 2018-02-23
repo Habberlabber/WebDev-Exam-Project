@@ -1,3 +1,10 @@
-<p>
-  map-page works!
-</p>
+<div class="uk-height-viewport uk-background-secondary uk-flex uk-flex-center uk-flex-middle">
+
+    <div 
+      style="height: 500px; width: 500px; padding: 0;"
+      class="leaflet"
+      leaflet 
+      (leafletMapReady)="onMapReady($event)"
+      [leafletOptions]="options"></div>
+
+</div>
