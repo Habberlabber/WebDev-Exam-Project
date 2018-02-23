@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'WD-vote-card',
@@ -7,34 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VoteCardComponent implements OnInit {
 
+  @Input() person:any;
+
   constructor() { }
 
   ngOnInit() {
-  }
-
-  person:any = {
-    firstname: "Test",
-    lastname: " user",
-    desc: "Hej med dig! Dette er en lang beskrivelse af en perosn Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem labore odio omnis adipisci nostrum optio dolorem odit qui vitae eius magni, voluptatum at debitis rerum mollitia eos dolor sequi repel!",
-    age: 26,
-    images: [
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: ""
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: "This is me 1"
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: ""
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: "This is me 2"
-    }
-    ]
   }
 
 }
