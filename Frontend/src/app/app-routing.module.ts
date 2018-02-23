@@ -18,11 +18,16 @@ const routes: Routes = [
     path: 'play',
     component: VotePageComponent
   },
+  {
+      path: 'admin',
+      loadChildren: './admin/admin.module#AdminModule',
+      data: { preload: true }
+   },
   { 
     path: '',
     redirectTo: '/play',
     pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({

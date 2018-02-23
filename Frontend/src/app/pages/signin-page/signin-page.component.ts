@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+declare var UIkit: any;
+
 @Component({
   selector: 'WD-signin-page',
   templateUrl: './signin-page.component.html',
