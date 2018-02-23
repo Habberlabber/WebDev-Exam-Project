@@ -9,6 +9,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { VotePageComponent } from './pages/vote-page/vote-page.component';
 import { SigninPageComponent } from './pages/signin-page/signin-page.component';
 import { VoteCardComponent } from './pages/vote-page/vote-card/vote-card.component';
+import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { VoteCardComponent } from './pages/vote-page/vote-card/vote-card.compone
     SignupPageComponent,
     VotePageComponent,
     SigninPageComponent,
-    VoteCardComponent
+    VoteCardComponent,
+    BookmarksPageComponent
   ],
   imports: [
     BrowserModule,
