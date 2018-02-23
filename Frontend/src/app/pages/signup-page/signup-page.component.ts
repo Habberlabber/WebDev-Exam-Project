@@ -51,7 +51,7 @@ export class SignupPageComponent implements OnInit {
         Validators.minLength(8),    // Defines a minumul length for the field
         Validators.maxLength(128)   // Defines a max length for the field
       ])
-    )
+    ),
     confirmPassword: new FormControl(
       this.formCache.confirmPassword, 
       Validators.required         // The validation for confirm password is defined as the 3. parameter of the FormGorup function
