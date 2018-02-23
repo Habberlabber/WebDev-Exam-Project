@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SignupPageComponent implements OnInit {
   // Get the signup data form localstorage if present
-  formCache:any = localStorage.signupForm ? JSON.parse(localStorage.signupForm) : null;
+  formCache:any = localStorage.signupForm ? JSON.parse(localStorage.signupForm) : {};
 
   constructor(
     private router: Router
@@ -84,10 +84,10 @@ export class SignupPageComponent implements OnInit {
         Validators.maxLength(255)
       ])
     )
-  }, passwordMatchValidator);
+  }, this.passwordMatchValidator);
 
   // Function used to validate the password and confirm password are equal
-  function passwordMatchValidator(g: FormGroup) {
+  passwordMatchValidator(g: FormGroup) {
    return g.get('password').value === g.get('confirmPassword').value
       ? null : {'mismatch': true};
   }
