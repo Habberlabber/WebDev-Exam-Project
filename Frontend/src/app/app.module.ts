@@ -10,6 +10,7 @@ import { VotePageComponent } from './pages/vote-page/vote-page.component';
 import { SigninPageComponent } from './pages/signin-page/signin-page.component';
 import { VoteCardComponent } from './pages/vote-page/vote-card/vote-card.component';
 import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.component';
+import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.co
     VotePageComponent,
     SigninPageComponent,
     VoteCardComponent,
-    BookmarksPageComponent
+    BookmarksPageComponent,
+    ChatPageComponent
   ],
   imports: [
     BrowserModule,
