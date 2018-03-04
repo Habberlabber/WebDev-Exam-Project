@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 import { AppComponent } from './app.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
@@ -26,7 +27,8 @@ import { ChatPageComponent } from './pages/chat-page/chat-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
