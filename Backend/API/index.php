@@ -4,6 +4,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 require_once '../src/data.php';
+require_once '../src/validation.php';
 
 $app = new \Slim\App;
 
