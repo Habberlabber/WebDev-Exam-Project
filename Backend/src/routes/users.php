@@ -12,7 +12,7 @@ $app->get('/users', function (Request $request, Response $response, array $args)
 // Return user based on id
 $app->get('/users/{id}', function (Request $request, Response $response, array $args) {
   $id = $args['id']; // Get the id form the url
-  $users = getData("users"); // Get users form the database
+  $users = getData('users'); // Get users form the database
   if(!empty($users->$id)) { // If user with the id exists
     $user = json_encode($users->$id); // Make user object to string
     $response->getBody()->write($user); // Set the response body to the user json string

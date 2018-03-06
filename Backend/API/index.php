@@ -2,6 +2,8 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
+session_start();
+
 require '../vendor/autoload.php';
 require_once '../src/data.php';
 require_once '../src/validation.php';
@@ -15,6 +17,7 @@ $app->get('/hello/{name}', function (Request $request, Response $response, array
 });
 
 require_once '../src/routes/users.php';
+require_once '../src/routes/auth.php';
 
 $app->run();
 
