@@ -1,0 +1,13 @@
+{
+  "primary_key": 1,
+  "1": {
+    "first_name": "Kasper",
+    "last_name": "Laursen",
+    "email": "habberlabber@gmail.com",
+    "password": "qw12qw12",
+    "user_type": "1",
+    "birthday": "1994-01-13",
+    "creation_date": "2018-03-06",
+    "id": 1
+  }
+}
