@@ -8,7 +8,8 @@ function validateUserObject($user, $required = false){
     "password",
     "user_type",
     "birthday",
-    "creation_date"
+    "creation_date",
+    "gender"
   ];
   
   if($required){
@@ -32,6 +33,10 @@ function validateUserObject($user, $required = false){
         break;
       case 'password':
         if(strlen($value) < 8)
+          return false;
+        break;
+      case 'gender':
+        if($value != 0 && $value != 1)
           return false;
         break;
       case 'birthday':

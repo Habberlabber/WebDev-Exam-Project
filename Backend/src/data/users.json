@@ -1,5 +1,5 @@
 {
-  "primary_key": 1,
+  "primary_key": 6,
   "1": {
     "first_name": "Kasper",
     "last_name": "Laursen",
@@ -9,5 +9,50 @@
     "birthday": "1994-01-13",
     "creation_date": "2018-03-06",
     "id": 1
+  },
+  "2": {
+    "first_name": "Lars",
+    "last_name": "LArsen",
+    "email": "habberlabber@gmail.com",
+    "password": "qw12qw12",
+    "birthday": "1994-01-13",
+    "gender": "1",
+    "id": 2
+  },
+  "3": {
+    "first_name": "Lars",
+    "last_name": "LArsen",
+    "email": "habberlabber@gmail.com",
+    "password": "qw12qw12",
+    "birthday": "1994-01-13",
+    "gender": "0\n",
+    "id": 3
+  },
+  "4": {
+    "first_name": "Lars",
+    "last_name": "LArsen",
+    "email": "habberlabber@gmail.com",
+    "password": "qw12qw12",
+    "birthday": "1994-01-13",
+    "gender": "0",
+    "id": 4
+  },
+  "5": {
+    "first_name": "Lars",
+    "last_name": "LArsen",
+    "email": "habberlabber@gmail.com",
+    "password": "qw12qw12",
+    "birthday": "1994-01-13",
+    "gender": "0",
+    "id": 5
+  },
+  "6": {
+    "first_name": "Lars",
+    "last_name": "LArsen",
+    "email": "habberlabber@gmail.com",
+    "password": "qw12qw12",
+    "birthday": "1994-01-13",
+    "gender": "0",
+    "id": 6
   }
 }

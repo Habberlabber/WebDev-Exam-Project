@@ -3,7 +3,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 // List all users
-$app->get('/users', function (Request $request, Response $response, array $args) {
+$app->get('/users/', function (Request $request, Response $response, array $args) {
   $users = getData("users", true);
   $response->getBody()->write($users);
   return $response;
@@ -24,12 +24,14 @@ $app->get('/users/{id}', function (Request $request, Response $response, array $
 });
 
 // Create user
-$app->post('/users', function (Request $request, Response $response) {
+$app->post('/users/', function (Request $request, Response $response) {
   $data = $request->getParsedBody();
   $userObj = json_decode(json_encode($data)); // convert data form Array to JSON object
   $userObj->creation_date = $today = date("Y-m-d"); // Set the creation_date
   $userObj->user_type = !empty($userObj->user_type) ?: 0; // If no usertype is defined set to default
   if(validateUserObject($userObj, true)){
+    print_r($data);
+    print_r($userObj); 
     addData('users', $data);
     $response->getBody()->write('{"message": "The user have been created!"}');
     return $response;
