@@ -39,8 +39,8 @@ export class SignupPageComponent implements OnInit {
 
   // Setting up the form and validators
   signupForm = new FormGroup({
-    mail: new FormControl(          // Each input is defined as a new form control
-      this.formCache.mail,          // The initial value of the input se set here
+    email: new FormControl(          // Each input is defined as a new form control
+      this.formCache.email,          // The initial value of the input se set here
       Validators.compose([          // The compose function is used to add multiple validators to one field
           Validators.required,      // This field is required
           Validators.email          // Ads the angualr default email validatitor
@@ -62,16 +62,16 @@ export class SignupPageComponent implements OnInit {
       this.formCache.birthday, 
       Validators.required         // Since this field only have one validator there is no need for the compose function
     ),
-    firstname: new FormControl(
-      this.formCache.firstname, 
+    first_name: new FormControl(
+      this.formCache.first_name, 
       Validators.compose([
         Validators.required, 
         Validators.minLength(2), 
         Validators.maxLength(32)
       ])
     ),
-    lastname: new FormControl(
-      this.formCache.lastname, 
+    last_name: new FormControl(
+      this.formCache.last_name, 
       Validators.compose([
         Validators.required, 
         Validators.minLength(2),

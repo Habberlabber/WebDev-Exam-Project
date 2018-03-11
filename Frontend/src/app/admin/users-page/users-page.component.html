@@ -1,42 +1,69 @@
 <div class="uk-height-viewport uk-background-secondary uk-flex uk-flex-center uk-flex-middle">
   <div class="uk-container uk-container-large">
 
-    <div class="uk-card uk-card-body uk-card-default">
-      <h3 class="uk-card-title">All users</h3>
+    <div class="uk-card uk-card-default">
+      <div class="uk-card-header uk-flex uk-flex-between uk-flex-middle">
+        <h3 class="uk-card-title uk-padding-remove uk-margin-remove">All users</h3>
+        <button class="uk-button uk-button-primary" uk-toggle="target: #createUserOverlay" >Add user</button>
+      </div>
+      <div class="uk-card-body uk-padding-remove-top">
 
-      <table class="uk-table uk-table-striped uk-table-hover uk-table-middle">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>E-mail</th>
-            <th>Birthdate</th>
-            <th>Phone</th>
-            <th>Creation date</th>
-            <th>Last online</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="uk-table-shrink">
-            <td>0</td>
-            <td>Kasper</td>
-            <td>Laursen</td>
-            <td>habber@habber.dk</td>
-            <td>13-01-1994</td>
-            <td>52399914</td>
-            <td>20-02-2018</td>
-            <td>22-02-2018</td>
-            <td>
-              <button class="uk-button uk-button-primary">Edit</button>
-              <button class="uk-button uk-button-danger">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <table class="uk-table uk-table-striped uk-table-hover uk-table-middle">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Gender</th>
+              <th>E-mail</th>
+              <th>User type</th>
+              <th>Birthday</th>
+              <th>Creation date</th>
+              <th>Last online</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="uk-table-shrink" *ngFor=" let user of users ">
+              <td>{{user.id}}</td>
+              <td>{{user.first_name}}</td>
+              <td>{{user.last_name}}</td>
+              <td>{{user.gender}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.user_type}}</td>
+              <td>{{user.birthday}}</td>
+              <td>{{user.creation_date}}</td>
+              <td>{{user.last_active}}</td>
+              <td>
+                <button class="uk-button uk-button-primary" uk-toggle="target: #editUserOverlay" (click)="chooseUser(user)" >Edit</button>
+                <button class="uk-button uk-button-danger" (click)="delete(user.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
+      </div>
     </div>
 
   </div>
+</div>
+
+<div id="editUserOverlay" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <h2 class="uk-modal-title">Edit User</h2>
+      
+      <WD-edit-form [user]="choosenUser" *ngIf="choosenUser"></WD-edit-form>
+
+    </div>
+</div>
+
+<div id="createUserOverlay" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <h2 class="uk-modal-title">Create User</h2>
+      
+      <WD-create-form></WD-create-form>
+
+    </div>
 </div>

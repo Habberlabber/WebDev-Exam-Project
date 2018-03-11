@@ -27,13 +27,17 @@
   }  
 
   // Function that adds the given objest to the givne file
-  function addData($tablename, $object) {
+  function addData($tablename, $object, $isJSON) {
     $config = include('config.php');
     $filename = $tablename . '.json'; // Create the filename from the function parameter
     $data = file_get_contents($config['dataPath'].$filename); // Get contents of the file
     $data = json_decode($data); // Turn string to json object
     $id = ++$data->primary_key; // Indent the primary_key and save new value to be used as key for new object
-    $object['id'] = $id; // Set the id on the user-object
+    if($isJSON){
+      $object->id = $id; // Set the id on the user-object
+    }else{
+      $object['id'] = $id; // Set the id on the user-object
+    }
     $data->$id = $object; // Set the objecs with the new key to be the given object
     $data = json_encode($data); // Convert the array to string
     file_put_contents($config['dataPath'].$filename, $data); // Update the file

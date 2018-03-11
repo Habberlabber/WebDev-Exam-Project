@@ -26,13 +26,12 @@ $app->get('/users/{id}', function (Request $request, Response $response, array $
 // Create user
 $app->post('/users/', function (Request $request, Response $response) {
   $data = $request->getParsedBody();
+  print_r($data);
   $userObj = json_decode(json_encode($data)); // convert data form Array to JSON object
   $userObj->creation_date = $today = date("Y-m-d"); // Set the creation_date
   $userObj->user_type = !empty($userObj->user_type) ?: 0; // If no usertype is defined set to default
   if(validateUserObject($userObj, true)){
-    print_r($data);
-    print_r($userObj); 
-    addData('users', $data);
+    addData('users', $userObj, true);
     $response->getBody()->write('{"message": "The user have been created!"}');
     return $response;
   }else{

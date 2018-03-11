@@ -26,4 +26,22 @@ export class UserApiService {
                .get(this.usersUrl + userId);
   }
 
+  //Deletes a user by the users id
+  deleteUserById(userId:string): Observable<object> {
+    return this.http
+               .delete(this.usersUrl + userId);
+  }
+
+  //Deletes a user by the users id
+  updateUserById(userId:string, form): Observable<object> {
+    return this.http
+               .put(this.usersUrl + userId, form);
+  }
+
+  //Deletes a user by the users id
+  createUser(form): Observable<object> {
+    return this.http
+               .post(this.usersUrl, form);
+  }
+
 }

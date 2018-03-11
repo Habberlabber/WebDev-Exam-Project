@@ -1,0 +1,83 @@
+<form [formGroup]="createForm" (ngSubmit)="onSubmit()" class="uk-form-stacked">
+
+  <div class="uk-margin">
+    <input 
+      class="uk-input" 
+      type="mail" 
+      placeholder="E-mail" 
+      formControlName="email" 
+      [class.uk-form-success]="createForm.controls.email.valid"
+      [class.uk-form-danger]=" !createForm.controls.email.valid && createForm.controls.email.touched "
+    >
+  </div>
+
+  <div class="uk-margin">
+    <input 
+      class="uk-input" 
+      type="password" 
+      placeholder="Password" 
+      formControlName="password"
+      [class.uk-form-danger]=" !createForm.controls.password.valid && createForm.controls.password.touched "
+    >
+  </div>
+
+  <div class="uk-margin">
+    <label class="uk-form-label">Birthday</label>
+    <input 
+      class="uk-input" 
+      type="date" 
+      placeholder="Birthday" 
+      formControlName="birthday"
+      [class.uk-form-success]="createForm.controls.birthday.valid"
+      [class.uk-form-danger]=" !createForm.controls.birthday.valid && createForm.controls.birthday.touched "
+    >
+  </div>
+
+  <div class="uk-margin">
+    <select 
+      class="uk-select" 
+      formControlName="gender"
+      [class.uk-form-success]="createForm.controls.gender.valid"
+      [class.uk-form-danger]=" !createForm.controls.gender.valid && createForm.controls.gender.touched ">
+      <option value="null" disabled selected>Gender</option>
+      <option value="0"> Male </option>
+      <option value="0"> Female </option>
+    </select>
+  </div>
+
+  <div class="uk-margin">
+    <input 
+      class="uk-input" 
+      type="text" 
+      placeholder="Firstname" 
+      formControlName="first_name"
+      [class.uk-form-success]="createForm.controls.first_name.valid"
+      [class.uk-form-danger]=" !createForm.controls.first_name.valid && createForm.controls.first_name.touched "
+    >
+  </div>
+
+  <div class="uk-margin">
+    <input 
+      class="uk-input" 
+      type="text" 
+      placeholder="Lastname" 
+      formControlName="last_name"
+      [class.uk-form-success]="createForm.controls.last_name.valid"
+      [class.uk-form-danger]=" !createForm.controls.last_name.valid && createForm.controls.last_name.touched "
+    >
+  </div>
+
+  <div class="uk-margin">
+    <textarea 
+      class="uk-textarea" 
+      rows="5" 
+      placeholder="Description" 
+      formControlName="description"
+      [class.uk-form-success]="createForm.controls.description.valid"
+      [class.uk-form-danger]=" !createForm.controls.description.valid && createForm.controls.description.touched "
+      ></textarea>
+  </div>
+
+  <button class="uk-button uk-button-primary uk-width-1-1" [disabled]="!createForm.valid">Update user</button>
+
+</form>
