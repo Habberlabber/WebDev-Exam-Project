@@ -39,7 +39,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 ~~17. Sound~~
 
-18. Desktop notification
+~~18. Desktop notification~~
 
 ~~19. Geolocation~~
 
