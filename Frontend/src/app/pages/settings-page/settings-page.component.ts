@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { UserApiService } from '../../api-services/user-api.service';
+import { AuthApiService } from '../../api-services/auth-api.service';
 
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -12,13 +13,37 @@ declare var UIkit: any;
   selector: 'WD-settings-page',
   templateUrl: './settings-page.component.html',
   styleUrls: ['./settings-page.component.scss'],
-  providers: [UserApiService]
+  providers: [UserApiService, AuthApiService]
 })
 export class SettingsPageComponent implements OnInit {
 
-  constructor(private userApi: UserApiService) { }
+  constructor(
+    private userApi: UserApiService,
+    private authApi: AuthApiService
+  ) { }
+  user;
+  ngOnInit() {
+    this.authApi.check().subscribe(
+      res => {
+        console.log(res);
+        this.user = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
-  ngOnInit() { }
+  toggleVIP(){
+    let obj = {"user_type": this.user.user_type == 1 ? 2 : 1 };
+    this.userApi.updateCurrentUser(obj)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.user.user_type = obj.user_type;
+        }
+      );
+  }
 
   passwordSubmit(){
     if(this.passwordForm.valid){

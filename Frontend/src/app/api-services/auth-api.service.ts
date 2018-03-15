@@ -20,10 +20,14 @@ export class AuthApiService {
                .post(this.authUrl + "login", form);
   }
 
-
   check(): Observable<object> {
     return this.http
                .get(this.authUrl);
+  }
+
+  logout(): Observable<object> {
+    return this.http
+               .delete(this.authUrl);
   }
 
 }

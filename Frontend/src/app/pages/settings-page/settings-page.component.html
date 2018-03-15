@@ -43,10 +43,17 @@
       </div>
 
       <div>
-        <div class="uk-card uk-card-default uk-card-body">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-bottom">
           <h3>Images</h3>
 
           <WD-image-upload></WD-image-upload>
+
+        </div>
+        <div class="uk-card uk-card-default uk-card-body" *ngIf="user">
+          <h3>VIP</h3>
+
+          <button *ngIf="user.user_type == 1" class="uk-button uk-button-primary uk-width-1-1" (click)="toggleVIP()">Enable VIP</button>
+          <button *ngIf="user.user_type == 2" class="uk-button uk-button-danger uk-width-1-1" (click)="toggleVIP()">Disable VIP</button>
 
         </div>
       </div>

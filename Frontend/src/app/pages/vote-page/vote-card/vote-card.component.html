@@ -1,7 +1,7 @@
 <div class="uk-card uk-card-default uk-card-small uk-width-medium">
   <div class="uk-card-media-top">
-    <div class="uk-card-badge uk-margin-small">
-      <a href="" class="uk-icon-button uk-background-primary uk-light" uk-icon="bookmark"></a>
+    <div class="uk-card-badge uk-margin-small" *ngIf="user">
+      <a *ngIf="user.user_type == 2" (click)="bookmark(person.id)" class="uk-icon-button uk-background-primary uk-light" uk-icon="bookmark"></a>
     </div>
     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true; ratio: 1:1">
       <ul class="uk-slideshow-items" uk-lightbox="animation: slide">

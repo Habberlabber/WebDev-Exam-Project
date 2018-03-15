@@ -10,8 +10,8 @@
           type="mail" 
           placeholder="E-mail" 
           formControlName="email" 
-          [class.uk-form-success]="signupForm.controls.mail.valid"
-          [class.uk-form-danger]=" !signupForm.controls.mail.valid && signupForm.controls.mail.touched "
+          [class.uk-form-success]="signupForm.controls.email.valid"
+          [class.uk-form-danger]=" !signupForm.controls.email.valid && signupForm.controls.email.touched "
         >
       </div>
 
@@ -61,6 +61,18 @@
       </div>
 
       <div class="uk-margin">
+        <select 
+          class="uk-select" 
+          formControlName="gender"
+          [class.uk-form-success]="signupForm.controls.gender.valid"
+          [class.uk-form-danger]=" !signupForm.controls.gender.valid && signupForm.controls.gender.touched ">
+          <option value="null" disabled selected>Gender</option>
+          <option value="0"> Male </option>
+          <option value="1"> Female </option>
+        </select>
+      </div>
+
+      <div class="uk-margin">
         <input 
           class="uk-input" 
           type="text" 
@@ -69,17 +81,6 @@
           [class.uk-form-success]="signupForm.controls.last_name.valid"
           [class.uk-form-danger]=" !signupForm.controls.last_name.valid && signupForm.controls.last_name.touched "
         >
-      </div>
-
-      <div class="uk-margin">
-        <textarea 
-          class="uk-textarea" 
-          rows="5" 
-          placeholder="Description" 
-          formControlName="description"
-          [class.uk-form-success]="signupForm.controls.description.valid"
-          [class.uk-form-danger]=" !signupForm.controls.description.valid && signupForm.controls.description.touched "
-          ></textarea>
       </div>
 
       <button class="uk-button uk-button-primary uk-width-1-1" [disabled]="!signupForm.valid">Signup</button>

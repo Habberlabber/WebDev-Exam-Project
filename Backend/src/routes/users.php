@@ -23,15 +23,19 @@ $app->get('/users/{id}', function (Request $request, Response $response, array $
   return $response;
 });
 
+require_once '../src/mail.php';
+
 // Create user
 $app->post('/users/', function (Request $request, Response $response) {
   $data = $request->getParsedBody();
-  print_r($data);
+  $users = getData('users');
   $userObj = json_decode(json_encode($data)); // convert data form Array to JSON object
   $userObj->creation_date = $today = date("Y-m-d"); // Set the creation_date
   $userObj->user_type = !empty($userObj->user_type) ?: 0; // If no usertype is defined set to default
   if(validateUserObject($userObj, true)){
     addData('users', $userObj, true);
+    $id = $users->primary_key +1;
+    sendMail($userObj->email, "http://localhost/WebDev-Exam-Project/Backend/API/activate/$id");
     $response->getBody()->write('{"message": "The user have been created!"}');
     return $response;
   }else{
@@ -43,6 +47,20 @@ $app->post('/users/', function (Request $request, Response $response) {
   $success = '{"message": "The user could not be created!"}';
   $response->getBody()->write($success);
 
+  return $response;
+});
+
+$app->get('/activate/{id}', function (Request $request, Response $response, array $args) {
+  $users = getData('users');
+  $id = $args['id'];
+  if($users->$id->user_type == 0){
+    $users->$id->user_type = 1;
+    updateData('users', $users);
+    $response->getBody()->write("You are now active!!");
+    return $response;
+  }
+
+  $response->getBody()->write("This link is no longer useable!!");
   return $response;
 });
 

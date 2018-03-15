@@ -20,11 +20,12 @@ export class MapPageComponent implements OnInit {
 
       for(let u of users){
         if(u.location){
+          let img = u.images ? 'http://localhost/WebDev-Exam-Project/Backend/src/images/' + u.images[0] : 'leaflet/marker-icon.png';
           let uMarker = marker([ u.location.lat, u.location.lon ], {
             icon: icon({
               iconSize: [ 50, 50 ],
               iconAnchor: [ 25, 25 ],
-              iconUrl: 'http://localhost/WebDev-Exam-Project/Backend/src/images/' + u.images[0]
+              iconUrl: img
             })
           });
           this.userGroupArray.push(uMarker);

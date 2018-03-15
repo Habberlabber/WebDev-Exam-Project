@@ -41,6 +41,7 @@ require_once '../src/routes/users.php';
 require_once '../src/routes/auth.php';
 require_once '../src/routes/game.php';
 require_once '../src/routes/bookmark.php';
+require_once '../src/routes/notifications.php';
 
 // Catch-all route to serve a 404 Not Found page if none of the routes match
 // NOTE: make sure this route is defined last

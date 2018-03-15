@@ -30,7 +30,7 @@ $app->post('/auth/login', function (Request $request, Response $response) {
 });
 
 // Log out
-$app->delete('/auth/login', function (Request $request, Response $response) {
+$app->delete('/auth/', function (Request $request, Response $response) {
   
   session_destroy();  
   $response->getBody()->write('{"message": "Logout succeded!"}');
