@@ -9,7 +9,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 ~~2. Singup~~
 
-3. Get email to activate/verify account
+~~3. Get email to activate/verify account~~
 
 ~~4. Login (session)~~
 
