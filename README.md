@@ -23,7 +23,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 ~~9. If no one like the user logged in, nothing happens~~
 
-10. If the user logged gets a like, the system shows that
+~~10. If the user logged gets a like, the system shows that~~
 
 11. When 2 people like each other, they can see more info about them
 
@@ -37,7 +37,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 ~~16. Use localStorage~~
 
-17. Sound
+~~17. Sound~~
 
 18. Desktop notification
 
