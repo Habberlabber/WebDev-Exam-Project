@@ -49,7 +49,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 ~~22. Use POST or GET according the best approaches~~
 
-23. VIP users have other rights (normal user and VIP users)
+~~23. VIP users have other rights (normal user and VIP users)~~
 
 ~~24. Administrator of the system, can CRUD any user~~
 
