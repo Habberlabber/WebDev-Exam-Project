@@ -6,8 +6,8 @@
     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true; ratio: 1:1">
       <ul class="uk-slideshow-items" uk-lightbox="animation: slide">
         <li *ngFor="let image of person.images">
-          <a class="uk-inline uk-height-1-1 uk-width-1-1" href="{{image.url}}" [attr.caption]="image.title">
-            <img src="{{image.url}}" alt="{{image.title}}" uk-cover>
+          <a class="uk-inline uk-height-1-1 uk-width-1-1" [href]=" 'http://localhost/WebDev-Exam-Project/Backend/src/images/' + image ">
+            <img [src]=" 'http://localhost/WebDev-Exam-Project/Backend/src/images/' + image " alt="{{image}}" uk-cover>
           </a>
           <div 
             *ngIf="image.title" 
@@ -24,20 +24,17 @@
   </div>
   <div class="uk-card-body">
     <h3 class="uk-card-title">
-      {{person.firstname}} {{person.lastname}} <small>({{person.age}})</small>
+      {{person.first_name}} {{person.last_name}} <small>({{person.age}})</small>
     </h3>
     <p>
-      {{person.desc}}
+      {{person.description}}
     </p>
   </div>
   <div class="uk-card-footer uk-flex uk-flex-between">
-    <button class="uk-button uk-button-danger">
+    <button class="uk-button uk-button-danger" (click)="dislike(person.id)">
       <i class="mdi mdi-delete mdi-24px"></i>
     </button>
-    <button class="uk-button uk-button-secondary">
-      <i class="mdi mdi-duck mdi-24px"></i>
-    </button>
-    <button class="uk-button uk-button-primary">
+    <button class="uk-button uk-button-primary" (click)="like(person.id)">
       <i class="mdi mdi-heart mdi-24px"></i>
     </button>
   </div>

@@ -1,0 +1,57 @@
+<div class="uk-height-viewport uk-background-primary">
+  <div class="uk-container">
+
+    <div class="uk-child-width-expand@s uk-flex-middle uk-height-viewport" uk-grid>
+
+      <div>
+        <div class="uk-card uk-card-default uk-card-body uk-margin-bottom">
+          <h3>General settings</h3>
+          
+          <WD-settings-form></WD-settings-form>
+
+        </div>
+
+        <div class="uk-card uk-card-default uk-card-body">
+          <h3>Change password</h3>
+
+          <form [formGroup]="passwordForm" (ngSubmit)="passwordSubmit()" class="uk-form-stacked">
+
+            <div class="uk-margin">
+              <input  
+                class="uk-input" 
+                type="password" 
+                placeholder="Password" 
+                formControlName="password"
+                [class.uk-form-danger]=" !passwordForm.controls.password.valid && passwordForm.controls.password.touched "
+              >
+            </div>
+
+            <div class="uk-margin">
+              <input 
+                class="uk-input" 
+                type="password" 
+                placeholder="Repeat password" 
+                formControlName="confirmPassword"
+                [class.uk-form-danger]=" !passwordForm.controls.confirmPassword.valid && passwordForm.controls.confirmPassword.touched "
+              >
+            </div>
+
+            <button class="uk-button uk-button-primary uk-width-1-1" [disabled]="!passwordForm.valid">Change Password</button>
+
+          </form>
+        </div>
+      </div>
+
+      <div>
+        <div class="uk-card uk-card-default uk-card-body">
+          <h3>Images</h3>
+
+          <WD-image-upload></WD-image-upload>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

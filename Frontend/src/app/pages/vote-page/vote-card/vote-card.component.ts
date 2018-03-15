@@ -1,40 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { BookmarkApiService } from '../../../api-services/bookmark-api.service';
+import { GameApiService } from '../../../api-services/game-api.service';
 
 @Component({
   selector: 'WD-vote-card',
   templateUrl: './vote-card.component.html',
-  styleUrls: ['./vote-card.component.scss']
+  styleUrls: ['./vote-card.component.scss'],
+  providers: [BookmarkApiService, GameApiService]
 })
 export class VoteCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() person:any;
+  @Output() vote = new EventEmitter<string>();
 
-  ngOnInit() {
+  constructor(
+    private bmApi: BookmarkApiService,
+    private gameApi: GameApiService
+    ) { }
+  ngOnInit() { }
+
+  like(id){
+    this.gameApi.vote(id, 1).subscribe(
+      res => {
+        console.log(res);
+        this.vote.emit("next");
+      },
+      err => {
+        this.person = null;
+      }
+    );
   }
 
-  person:any = {
-    firstname: "Test",
-    lastname: " user",
-    desc: "Hej med dig! Dette er en lang beskrivelse af en perosn Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem labore odio omnis adipisci nostrum optio dolorem odit qui vitae eius magni, voluptatum at debitis rerum mollitia eos dolor sequi repel!",
-    age: 26,
-    images: [
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: ""
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: "This is me 1"
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: ""
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: "This is me 2"
-    }
-    ]
+  dislike(id){
+    this.gameApi.vote(id, -1).subscribe(
+      res => {
+        console.log(res);
+        this.vote.emit("next");
+      },
+      err => {
+        this.person = null;
+      }
+    );
+  }
+
+  bookmark(id){
+    this.bmApi.addBookmark(id).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

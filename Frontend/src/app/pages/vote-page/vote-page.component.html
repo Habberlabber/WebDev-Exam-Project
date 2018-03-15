@@ -1,5 +1,8 @@
 <div class="uk-height-viewport uk-background-primary uk-flex uk-flex-center uk-flex-middle">
 
-  <WD-vote-card></WD-vote-card>
+  <WD-vote-card *ngIf="person" [person]="person" (vote)="getNext()"></WD-vote-card>
+  <div *ngIf="!person">
+    No more users available!
+  </div>
 
 </div>
