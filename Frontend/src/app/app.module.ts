@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,6 +36,7 @@ import { ImageUploadComponent } from './pages/settings-page/image-upload/image-u
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    LeafletModule.forRoot(),
     HttpClientModule
   ],
   providers: [ApiSettings],
