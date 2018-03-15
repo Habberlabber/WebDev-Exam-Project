@@ -7,7 +7,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 ~~1. One page not necessary~~
 
-2. Singup
+~~2. Singup~~
 
 3. Get email to activate/verify account
 
@@ -27,7 +27,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 11. When 2 people like each other, they can see more info about them
 
-12. Logout (optional logout feature could be-: if no activity for 10 minutes, logout automatically)
+~~12. Logout (optional logout feature could be-: if no activity for 10 minutes, logout automatically)~~ 
 
 ~~13. Validate the data (front-end and also back-end)~~
 
