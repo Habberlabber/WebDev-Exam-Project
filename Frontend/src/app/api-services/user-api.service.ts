@@ -38,10 +38,24 @@ export class UserApiService {
                .put(this.usersUrl + userId, form);
   }
 
-  //Deletes a user by the users id
+  //updates the current user
+  updateCurrentUser(form): Observable<object> {
+    return this.http
+               .put(this.usersUrl + "me", form);
+  }
+
+  //creates a user
   createUser(form): Observable<object> {
     return this.http
                .post(this.usersUrl, form);
   }
+
+  addImage(fileToUpload: File): Observable<object> {
+    const endpoint = this.usersUrl + "image";
+    const formData: FormData = new FormData();
+    formData.append('img', fileToUpload, fileToUpload.name);
+    return this.http
+               .post(endpoint, formData);
+}
 
 }

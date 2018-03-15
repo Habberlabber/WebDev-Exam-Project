@@ -1,0 +1,26 @@
+<form [formGroup]="settingsForm" (ngSubmit)="onSubmit()" class="uk-form-stacked">
+
+  <div class="uk-margin">
+    <textarea 
+      class="uk-textarea" 
+      rows="5" 
+      placeholder="Description" 
+      formControlName="description"
+      [class.uk-form-success]="settingsForm.controls.description.valid"
+      [class.uk-form-danger]=" !settingsForm.controls.description.valid && settingsForm.controls.description.touched "
+      ></textarea>
+  </div>
+
+  <div class="uk-margin">
+    <select 
+      class="uk-select" 
+      formControlName="preference">
+      <option value="null" disabled selected>Preference</option>
+      <option value="0"> Male </option>
+      <option value="1"> Female </option>
+    </select>
+  </div>
+
+  <button class="uk-button uk-button-primary uk-width-1-1" [disabled]="!settingsForm.valid">Update</button>
+
+</form>

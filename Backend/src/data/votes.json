@@ -1,0 +1,8 @@
+{
+  "primary_key": 1,
+  "1": {
+    "voter_id": 1,
+    "voted_id": 6,
+    "vote": -1
+  }
+}

@@ -13,6 +13,9 @@ import { VotePageComponent } from './pages/vote-page/vote-page.component';
 import { SigninPageComponent } from './pages/signin-page/signin-page.component';
 import { VoteCardComponent } from './pages/vote-page/vote-card/vote-card.component';
 import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.component';
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { SettingsFormComponent } from './pages/settings-page/settings-form/settings-form.component';
+import { ImageUploadComponent } from './pages/settings-page/image-upload/image-upload.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.co
     VotePageComponent,
     SigninPageComponent,
     VoteCardComponent,
-    BookmarksPageComponent
+    BookmarksPageComponent,
+    SettingsPageComponent,
+    SettingsFormComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,

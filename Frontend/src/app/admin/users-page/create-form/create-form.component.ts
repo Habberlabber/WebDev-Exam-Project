@@ -6,6 +6,8 @@ import { UserApiService } from '../../../api-services/user-api.service';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+declare var UIkit: any;
+
 @Component({
   selector: 'WD-create-form',
   templateUrl: './create-form.component.html',
@@ -23,7 +25,7 @@ export class CreateFormComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          UIkit.modal(createUserOverlay).hide(); // Hide the modal using uikit!
+          UIkit.modal("createUserOverlay").hide(); // Hide the modal using uikit!
         }
       );
     }else{

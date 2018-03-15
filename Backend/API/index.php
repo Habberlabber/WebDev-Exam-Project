@@ -5,6 +5,7 @@
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\UploadedFile;
 
 session_start();
 
@@ -12,7 +13,11 @@ require '../vendor/autoload.php';
 require_once '../src/data.php';
 require_once '../src/validation.php';
 
-$app = new \Slim\App;
+$app = new \Slim\App([
+    'settings' => [
+        'displayErrorDetails' => true
+    ]
+]);
 
 $app->options('/{routes:.+}', function ($request, $response, $args) {
     return $response;
@@ -34,6 +39,8 @@ $app->get('/hello/{name}', function (Request $request, Response $response, array
 
 require_once '../src/routes/users.php';
 require_once '../src/routes/auth.php';
+require_once '../src/routes/game.php';
+require_once '../src/routes/bookmark.php';
 
 // Catch-all route to serve a 404 Not Found page if none of the routes match
 // NOTE: make sure this route is defined last

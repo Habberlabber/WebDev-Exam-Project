@@ -1,10 +1,12 @@
-import { Component, OnInit. Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { UserApiService } from '../../../api-services/user-api.service';
 
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+
+declare var UIkit: any;
 
 @Component({
   selector: 'WD-edit-form',
@@ -25,8 +27,6 @@ export class EditFormComponent implements OnInit {
   ngOnInit() {}
 
   setForm(user){
-    console.log(user)
-
     this.updateForm.setValue({
       email: user.email ? user.email : "" , 
       birthday: user.birthday ? user.birthday : "",
@@ -43,7 +43,7 @@ export class EditFormComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          UIkit.modal(editUserOverlay).hide(); // Hide the modal using uikit!
+          UIkit.modal("editUserOverlay").hide(); // Hide the modal using uikit!
         }
       );
     }else{

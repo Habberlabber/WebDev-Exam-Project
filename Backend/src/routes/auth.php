@@ -12,6 +12,7 @@ $app->post('/auth/login', function (Request $request, Response $response) {
     foreach ($users as $key => $user) {
       if(!empty($user->password) && !empty($user->email) && $user->password == $data['password'] && $user->email == $data['email']){
         $_SESSION['user'] = $user;
+        print_r($_SESSION['user']);
         $response->getBody()->write('{"message": "Login was succesfull!"}');
         return $response;
       }
@@ -38,18 +39,24 @@ $app->delete('/auth/login', function (Request $request, Response $response) {
 });
 
 // Log out
-$app->get('/auth', function (Request $request, Response $response) {
+$app->get('/auth/', function (Request $request, Response $response) {
 
-  if(!empty($_SESSION['user'])){ // Check if the session exists
-    $id = $_SESSION['user']->id; // Get the users ID
-    if($_SESSION['user'] == getData('users')->$id){ // If the session object is equal to the object in the database the user is authentic!
-      $response->getBody()->write('{"message": "The user is logged in!"}');
-      return $response;
-    }
-  }
+  // if(!empty($_SESSION['user'])){ // Check if the session exists
+  //   $id = $_SESSION['user']->id; // Get the users ID
+  //   if($_SESSION['user'] == getData('users')->$id){ // If the session object is equal to the object in the database the user is authentic!
+  //     $response->getBody()->write(json_encode($_SESSION['user']));
+  //     return $response;
+  //   }
+  // }
+  $users = getData('users');
+  $id = 1;
+  $user = $users->$id;
+  $response->getBody()->write(json_encode($user));
+  return $response;
+
 
   $response = $response->withStatus(403);
-  $response->getBody()->write('{"message": "The does not have access to this feature!"}');
+  $response->getBody()->write('{"message": "The user is not online!"}');
   return $response;
 
 });
