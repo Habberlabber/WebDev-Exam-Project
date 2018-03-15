@@ -15,14 +15,13 @@ export class BookmarkApiService {
   bookmarkUrl:string = this.settings.baseUrl.concat("/bookmark/");
 
   //add mark 
-  addBookmark(user): Observable<object> {
-    let vote = {'vote': vote};
+  addBookmark(user): Observable<any> {
     return this.http
                .post(this.bookmarkUrl + user, null);
   }
 
   // Get marks
-  getBookmarks(): Observable<object> {
+  getBookmarks(): Observable<any> {
     return this.http
                .get(this.bookmarkUrl);
   }

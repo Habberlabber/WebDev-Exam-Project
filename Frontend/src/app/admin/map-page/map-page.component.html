@@ -1,10 +1,12 @@
 <div class="uk-height-viewport uk-background-secondary uk-flex uk-flex-center uk-flex-middle">
 
     <div 
-      style="height: 500px; width: 500px; padding: 0;"
+      style="height: 100vh; width: 100vw; padding: 0; z-index: 0; position: relative;"
       class="leaflet"
       leaflet 
       (leafletMapReady)="onMapReady($event)"
-      [leafletOptions]="options"></div>
+      [leafletOptions]="options"
+      *ngIf=" userGroupArray.length > 0 " >
+    </div>
 
 </div>

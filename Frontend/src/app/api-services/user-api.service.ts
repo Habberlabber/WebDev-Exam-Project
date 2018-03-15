@@ -15,13 +15,13 @@ export class UserApiService {
   usersUrl:string = this.settings.baseUrl.concat("/users/");
 
   //Gets a list of all users
-  listUsers(): Observable<object> {
+  listUsers(): Observable<any> {
     return this.http
                .get(this.usersUrl);
   }
 
   //Gets a user by the users id
-  getUserById(userId:string): Observable<object> {
+  getUserById(userId:string): Observable<any> {
     return this.http
                .get(this.usersUrl + userId);
   }

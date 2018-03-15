@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ApiSettings } from './api-services/api-settings';
+import { UserApiService } from './api-services/user-api.service';
 
 import { AppComponent } from './app.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
@@ -39,7 +40,7 @@ import { ImageUploadComponent } from './pages/settings-page/image-upload/image-u
     LeafletModule.forRoot(),
     HttpClientModule
   ],
-  providers: [ApiSettings],
+  providers: [ApiSettings, UserApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

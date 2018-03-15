@@ -15,14 +15,14 @@ export class GameApiService {
   gameUrl:string = this.settings.baseUrl.concat("/game/");
 
   //vote
-  vote(user, vote): Observable<object> {
-    let vote = {'vote': vote};
+  vote(user, vote): Observable<any> {
+    vote = {'vote': vote};
     return this.http
                .post(this.gameUrl + user, vote);
   }
 
   // Get player
-  getPlayer(): Observable<object> {
+  getPlayer(): Observable<any> {
     return this.http
                .get(this.gameUrl);
   }

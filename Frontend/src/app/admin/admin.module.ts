@@ -16,7 +16,7 @@ import { CreateFormComponent } from './users-page/create-form/create-form.compon
   imports: [
     CommonModule,
     AdminRoutingModule,
-    LeafletModule
+    LeafletModule,
     ReactiveFormsModule
   ],
   declarations: [
