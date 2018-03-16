@@ -15,17 +15,17 @@ export class AuthApiService {
   authUrl:string = this.settings.baseUrl.concat("/auth/");
 
   //login
-  login(form): Observable<object> {
+  login(form): Observable<any> {
     return this.http
                .post(this.authUrl + "login", form);
   }
 
-  check(): Observable<object> {
+  check(): Observable<any> {
     return this.http
                .get(this.authUrl);
   }
 
-  logout(): Observable<object> {
+  logout(): Observable<any> {
     return this.http
                .delete(this.authUrl);
   }
