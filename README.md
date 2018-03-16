@@ -25,7 +25,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 ~~10. If the user logged gets a like, the system shows that~~
 
-11. When 2 people like each other, they can see more info about them
+~~11. When 2 people like each other, they can see more info about them~~
 
 ~~12. Logout (optional logout feature could be-: if no activity for 10 minutes, logout automatically)~~ 
 
@@ -53,7 +53,7 @@ This repo contains the Exam project for the web development course at KEA.
 
 ~~24. Administrator of the system, can CRUD any user~~
 
-25. Chat is optional
+~~25. Chat is optional~~
 
 
 *Additional information*
