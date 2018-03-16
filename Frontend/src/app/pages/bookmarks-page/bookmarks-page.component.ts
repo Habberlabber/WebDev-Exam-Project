@@ -1,90 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BookmarkApiService } from '../../api-services/bookmark-api.service';
+
 @Component({
   selector: 'WD-bookmarks-page',
   templateUrl: './bookmarks-page.component.html',
-  styleUrls: ['./bookmarks-page.component.scss']
+  styleUrls: ['./bookmarks-page.component.scss'],
+  providers: [BookmarkApiService]
 })
 export class BookmarksPageComponent implements OnInit {
 
-  constructor() { }
+  people = [];
+
+  constructor(private bmApi: BookmarkApiService) { }
 
   ngOnInit() {
+    this.bmApi.getBookmarks().subscribe(
+      res => {
+        for(let p of res){
+          p.age = new Date(p.birthday);
+          p.age = Date.now() - p.age;
+          p.age = new Date(p.age);
+          p.age = Math.abs(p.age.getUTCFullYear() - 1970);
+        }
+        this.people = res;
+        console.log(res)
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
-
-  people = [
-    {
-      firstname: "Test",
-      lastname: " user",
-      desc: "Hej med dig! Dette er en lang beskrivelse af en perosn Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem labore odio omnis adipisci nostrum optio dolorem odit qui vitae eius magni, voluptatum at debitis rerum mollitia eos dolor sequi repel!",
-      age: 26,
-      images: [
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: ""
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: "This is me 1"
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: ""
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: "This is me 2"
-      }
-      ]
-    },
-    {
-      firstname: "Test",
-      lastname: " user",
-      desc: "Hej med dig! Dette er en lang beskrivelse af en perosn Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem labore odio omnis adipisci nostrum optio dolorem odit qui vitae eius magni, voluptatum at debitis rerum mollitia eos dolor sequi repel!",
-      age: 26,
-      images: [
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: ""
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: "This is me 1"
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: ""
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: "This is me 2"
-      }
-      ]
-    },
-    {
-      firstname: "Test",
-      lastname: " user",
-      desc: "Hej med dig! Dette er en lang beskrivelse af en perosn Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem labore odio omnis adipisci nostrum optio dolorem odit qui vitae eius magni, voluptatum at debitis rerum mollitia eos dolor sequi repel!",
-      age: 26,
-      images: [
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: ""
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: "This is me 1"
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: ""
-      },
-      {
-        url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-        title: "This is me 2"
-      }
-      ]
-    }
-  ]
 
 }

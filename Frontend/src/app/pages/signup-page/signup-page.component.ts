@@ -2,19 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { UserApiService } from '../../api-services/user-api.service';
+
 declare var UIkit: any;
 
 @Component({
   selector: 'WD-signup-page',
   templateUrl: './signup-page.component.html',
-  styleUrls: ['./signup-page.component.scss']
+  styleUrls: ['./signup-page.component.scss'],
+  providers: [ UserApiService ]
 })
 export class SignupPageComponent implements OnInit {
   // Get the signup data form localstorage if present
   formCache:any = localStorage.signupForm ? JSON.parse(localStorage.signupForm) : {};
 
   constructor(
-    private router: Router
+    private router: Router,
+    private userApi: UserApiService
   ) { }
 
   ngOnInit() {
@@ -29,8 +33,16 @@ export class SignupPageComponent implements OnInit {
   // This function is called when the sigunp form gets submitted!
   onSubmit(){
     if(this.signupForm.valid){
-      // @TODO send the form to the API! 
-      this.router.navigate(['']); // Navigate to the main directory
+      this.userApi.createUser(this.signupForm.value).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['']); // Navigate to the main directory
+        },
+        err => {
+          console.log(err);
+        }
+      );
+      
     }else{
       // If somehow the form gets submitted while invalid show an error notification
       UIkit.notification("<span uk-icon='icon:  warning'></span> The form is not valid!", {status:'danger'});
@@ -39,8 +51,8 @@ export class SignupPageComponent implements OnInit {
 
   // Setting up the form and validators
   signupForm = new FormGroup({
-    mail: new FormControl(          // Each input is defined as a new form control
-      this.formCache.mail,          // The initial value of the input se set here
+    email: new FormControl(          // Each input is defined as a new form control
+      this.formCache.email,          // The initial value of the input se set here
       Validators.compose([          // The compose function is used to add multiple validators to one field
           Validators.required,      // This field is required
           Validators.email          // Ads the angualr default email validatitor
@@ -60,33 +72,45 @@ export class SignupPageComponent implements OnInit {
     ),
     birthday: new FormControl(
       this.formCache.birthday, 
-      Validators.required         // Since this field only have one validator there is no need for the compose function
+      [
+        Validators.required, 
+        this.ageValidator
+      ]
     ),
-    firstname: new FormControl(
-      this.formCache.firstname, 
+    first_name: new FormControl(
+      this.formCache.first_name, 
       Validators.compose([
         Validators.required, 
         Validators.minLength(2), 
         Validators.maxLength(32)
       ])
     ),
-    lastname: new FormControl(
-      this.formCache.lastname, 
+    last_name: new FormControl(
+      this.formCache.last_name, 
       Validators.compose([
         Validators.required, 
         Validators.minLength(2),
         Validators.maxLength(32)
       ])
-    ),
-    description: new FormControl(
-      this.formCache.description, 
-      Validators.compose([
-        Validators.required, 
-        Validators.minLength(60), 
-        Validators.maxLength(255)
-      ])
     )
+    gender: new FormControl(
+      null,
+      Validators.required         // Since this field only have one validator there is no need for the compose function
+    ),
   }, this.passwordMatchValidator);
+
+  ageValidator(control: FormControl) { 
+    let bDay = control.value; 
+    let age = new Date(bDay);
+    age = Date.now() - age;
+    age = new Date(age);
+    age = Math.abs(age.getUTCFullYear() - 1970);
+    if(age < 18){
+      return { birthday: "You are too young!" };
+    }
+
+    return null; 
+  }
 
   // Function used to validate the password and confirm password are equal
   passwordMatchValidator(g: FormGroup) {

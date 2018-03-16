@@ -1,40 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 
+import { GameApiService } from '../../api-services/game-api.service';
+
 @Component({
   selector: 'WD-vote-page',
   templateUrl: './vote-page.component.html',
-  styleUrls: ['./vote-page.component.scss']
+  styleUrls: ['./vote-page.component.scss'],
+  providers: [GameApiService]
 })
 export class VotePageComponent implements OnInit {
-
-  constructor() { }
+  person;
+  constructor(
+    private gameApi: GameApiService
+  ) { }
 
   ngOnInit() {
+    this.getNext();
   }
 
-  person = {
-    firstname: "Test",
-    lastname: " user",
-    desc: "Hej med dig! Dette er en lang beskrivelse af en perosn Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem labore odio omnis adipisci nostrum optio dolorem odit qui vitae eius magni, voluptatum at debitis rerum mollitia eos dolor sequi repel!",
-    age: 26,
-    images: [
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: ""
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: "This is me 1"
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: ""
-    },
-    {
-      url: "https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png",
-      title: "This is me 2"
-    }
-    ]
+  getNext(){
+    this.gameApi.getPlayer().subscribe(
+      res => {
+        res.age = new Date(res.birthday);
+        res.age = Date.now() - res.age;
+        res.age = new Date(res.age);
+        res.age = Math.abs(res.age.getUTCFullYear() - 1970);
+        this.person = res;
+      },
+      err => {
+        this.person = null;
+      }
+    );
+  }
+
+  doVote(event){
+    console.log(event);
+    this.gameApi.vote(event.id, event.vote).subscribe(
+      res => {
+        console.log(res);
+        this.getNext();
+      },
+      err => {
+        this.person = null;
+      }
+    );
   }
 
 }

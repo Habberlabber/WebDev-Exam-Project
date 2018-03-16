@@ -8,6 +8,11 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
+        {
+          "glob": "**/*",
+          "input": "../node_modules/leaflet/dist/images",
+          "output": "leaflet/"
+        },
         "assets",
         "favicon.ico"
       ],
@@ -19,8 +24,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "WD",
       "styles": [
+        "styles.scss",
         "../node_modules/mdi/css/materialdesignicons.min.css",
-        "styles.scss"
+        "../node_modules/leaflet/dist/leaflet.css"
       ],
       "scripts": [
         "../node_modules/uikit/dist/js/uikit.min.js",

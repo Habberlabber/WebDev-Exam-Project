@@ -2,17 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AuthApiService } from '../../api-services/auth-api.service';
+
 declare var UIkit: any;
 
 @Component({
   selector: 'WD-signin-page',
   templateUrl: './signin-page.component.html',
-  styleUrls: ['./signin-page.component.scss']
+  styleUrls: ['./signin-page.component.scss'],
+  providers: [AuthApiService]
 })
 export class SigninPageComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authApi: AuthApiService
   ) { }
 
   ngOnInit() {
@@ -21,8 +25,14 @@ export class SigninPageComponent implements OnInit {
   // This function is called when the signin form gets submitted!
   onSubmit(){
     if(this.signinForm.valid){
-      // @TODO send the form to the API! 
-      this.router.navigate(['']); // Navigate to the main directory
+      this.authApi.login(this.signinForm.value).subscribe(data => {
+        // do something, if upload success
+        console.log(data)
+        this.router.navigate(['']); // Navigate to the main directory
+      }, error => {
+        console.log(error);
+      });
+      
     }else{
       // If somehow the form gets submitted while invalid show an error notification
       UIkit.notification("<span uk-icon='icon:  warning'></span> The form is not valid!", {status:'danger'});
@@ -30,7 +40,7 @@ export class SigninPageComponent implements OnInit {
   }
 
   signinForm = new FormGroup({
-    mail: new FormControl(          // Each input is defined as a new form control
+    email: new FormControl(          // Each input is defined as a new form control
       '',                           // The initial value of the input se set here
       Validators.compose([          // The compose function is used to add multiple validators to one field
           Validators.required,      // This field is required
