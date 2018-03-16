@@ -2,38 +2,64 @@
 
   <div class="uk-width-medium uk-background-secondary">
     
-    <div class="uk-padding-small uk-flex uk-flex-top uk-light">
-      <img class="uk-border-circle" src="https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png" width="50" height="50" alt="Border circle">
+    <div 
+      class="uk-padding-small uk-flex uk-flex-top uk-light uk-box-shadow-hover-large" 
+      *ngFor="let chat of chats; let i = index" 
+      style="cursor: pointer;"
+      (click)="selectChat(chat.id)">
+      <img *ngIf="chat.user.images" class="uk-border-circle" [src]="'http://localhost/WebDev-Exam-Project/Backend/src/images/' + chat.user.images[0]" width="50" height="50" alt="Border circle">
+      <img  *ngIf="!chat.user.images"  class="uk-border-circle" src="../../../assets/logo.png" width="50" height="50" alt="Border circle">
       <div class="uk-text-truncate uk-flex uk-flex-column uk-flex-center uk-margin-small-left">
-        <b>Navn Navnensen</b>
-        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cumque unde numquam, dicta officiis fugit, esse error quidem consequatur nostrum totam sit molestiae tempore, illo nam exercitationem! Quis, delectus obcaecati.</small>
+        <b>{{chat.user.first_name}} {{chat.user.last_name}}</b>
+        <small>{{chat.user.description}}</small>
       </div>
     </div>
 
   </div>
 
-  <div class="uk-height-viewport uk-width-expand uk-flex uk-flex-column uk-flex-stretch">
-    <div class="messages uk-flex uk-flex-column-reverse uk-flex-1">
-      
-      <div class="message uk-flex uk-flex-middle uk-margin">
-        <img class="uk-border-circle uk-margin-small-right uk-margin-small-left" src="https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png" width="40" height="40" alt="Border circle">
-        <div class="uk-padding-small uk-background-primary uk-border-rounded uk-width-large">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cumque unde numquam, dicta officiis fugit, esse error quidem consequatur nostrum totam sit molestiae tempore, illo nam exercitationem! Quis, delectus obcaecati.
+  <div class="uk-height-viewport uk-width-expand uk-flex uk-flex-column uk-flex-stretch" style="max-height: 100vh;">
+
+    <div class="messages uk-flex uk-flex-column-reverse uk-flex-1 uk-overflow-hidden" *ngIf="messages" style="overflow-y: scroll;">
+      <div  *ngFor=" let message of messages ">
+        <div class="message uk-flex uk-flex-middle uk-margin" *ngIf="message.sender_id == currentUser.id">
+          <img 
+            *ngIf="currentUser.images"  
+            class="uk-border-circle uk-margin-small-right uk-margin-small-left" 
+            [src]="'http://localhost/WebDev-Exam-Project/Backend/src/images/' + currentUser.images[0]" 
+            width="40" height="40" alt="Border circle">
+          <img 
+            *ngIf="!currentUser.images"  
+            class="uk-border-circle uk-margin-small-right uk-margin-small-left" 
+            src="../../../assets/logo.png" 
+            width="40" height="40" alt="Border circle">
+          <div class="uk-padding-small uk-background-primary uk-border-rounded uk-width-large" [innerHTML]="message.message">
+            
+          </div>
         </div>
-      </div>
       
-      <div class="message uk-flex uk-flex-row-reverse uk-flex-middle uk-margin">
-        <img class="uk-border-circle uk-margin-small-right uk-margin-small-left" src="https://www.shareicon.net/download/512x512/2016/05/24/769972_people_512x512.png" width="40" height="40" alt="Border circle">
-        <div class="uk-padding-small uk-background-secondary uk-light uk-border-rounded uk-width-large">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cumque unde numquam, dicta officiis fugit, esse error quidem consequatur nostrum totam sit molestiae tempore, illo nam exercitationem! Quis, delectus obcaecati.
+        <div class="message uk-flex uk-flex-row-reverse uk-flex-middle uk-margin" *ngIf="message.sender_id != currentUser.id">
+          <img 
+            *ngIf="message.user.images"  
+            class="uk-border-circle uk-margin-small-right uk-margin-small-left" 
+            [src]="'http://localhost/WebDev-Exam-Project/Backend/src/images/' + message.user.images[0]" 
+            width="40" height="40" alt="Border circle">
+          <img 
+            *ngIf="!message.user.images"  
+            class="uk-border-circle uk-margin-small-right uk-margin-small-left" 
+            src="../../../assets/logo.png" 
+            width="40" height="40" alt="Border circle">
+          <div class="uk-padding-small uk-background-secondary uk-light uk-border-rounded uk-width-large" [innerHTML]="message.message">
+            
+          </div>
         </div>
+
       </div>
 
     </div>
     
-    <div class="uk-flex">
-      <textarea class="uk-textarea" rows="5" placeholder="Your message..."></textarea>
-      <button class="uk-button uk-button-primary">
+    <div class="uk-flex" *ngIf="messages">
+      <textarea class="uk-textarea" rows="5" placeholder="Your message..." #message></textarea>
+      <button class="uk-button uk-button-primary" (click)="sendMessage(message.value)">
         Send
       </button>
     </div>

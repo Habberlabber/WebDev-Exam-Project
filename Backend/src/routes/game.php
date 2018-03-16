@@ -55,6 +55,8 @@ $app->post('/game/{voted_id}', function (Request $request, Response $response, a
   $voted_id = $args['voted_id'];
   $vote = $data['vote'];
 
+  $votes = getData("votes");
+  unset($votes->primary_key);
 
   //$id = $_SESSION['user'];
   $id = 1;
@@ -62,17 +64,44 @@ $app->post('/game/{voted_id}', function (Request $request, Response $response, a
   $marks = getData('marks');
 
   foreach ($marks as $key => $mark) {
-    if($mark->marker_id == $id && $mark->marked_id == $voted_id){
-      unset($marks->$key);
-      updateData('marks', $marks);
-      break;
+    if($key != 'primary_key'){
+      if($mark->marker_id == $id && $mark->marked_id == $voted_id){
+        unset($marks->$key);
+        updateData('marks', $marks);
+        break;
+      }
     }
   }
+
 
   $voteObj = new stdClass();
   $voteObj->voter_id = $id;
   $voteObj->voted_id = $voted_id;
   $voteObj->vote = $vote;
+
+  foreach ($votes as $key => $v) {
+    if($v->voter_id == $voteObj->voted_id && $v->voted_id == $voteObj->voter_id){
+
+      $notiObj = new stdClass();
+      $notiObj->from = $voted_id;
+      $notiObj->to = $id;
+      $notiObj->message = "Yay! You have a match!! Check your conversations!";
+      $notiObj->date = date("d-m-Y H:i:s");
+
+      $notiObj2 = $notiObj;
+      $notiObj2->from = $id;
+      $notiObj2->to = $voted_id;
+
+      $chatObj = new stdClass();
+      $chatObj->users =  [$id,$voted_id];
+      $chatObj->match_date = date("d-m-Y H:i:s");
+
+      addData('chat', $chatObj, true);
+      addData('notifications', $notiObj, true);
+      addData('notifications', $notiObj2, true);
+
+    }
+  }
 
   $notiObj = new stdClass();
   $notiObj->from = $id;

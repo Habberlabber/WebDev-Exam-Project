@@ -19,6 +19,7 @@ export class VotePageComponent implements OnInit {
   }
 
   getNext(){
+     console.log("getNext");
     this.gameApi.getPlayer().subscribe(
       res => {
         res.age = new Date(res.birthday);

@@ -2,8 +2,10 @@
   
   <div class="uk-margin-large-top uk-flex-center uk-width-1-1" uk-grid >
     <div *ngFor="let bookmark of people">
-      <WD-vote-card [person]="bookmark"></WD-vote-card>
+      <WD-vote-card [person]="bookmark" (vote)="getPeople()"></WD-vote-card>
     </div>
-  </div>
 
+    <div *ngIf="people.length <= 0">No more bookmarks!</div>
+  </div>
+  
 </div>

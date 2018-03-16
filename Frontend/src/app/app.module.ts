@@ -20,6 +20,7 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
 import { SettingsFormComponent } from './pages/settings-page/settings-form/settings-form.component';
 import { ImageUploadComponent } from './pages/settings-page/image-upload/image-upload.component';
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
+import { ChatComponent } from './pages/chat-page/chat/chat.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ChatPageComponent } from './pages/chat-page/chat-page.component';
     SettingsPageComponent,
     SettingsFormComponent,
     ImageUploadComponent,
-    ChatPageComponent
+    ChatPageComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

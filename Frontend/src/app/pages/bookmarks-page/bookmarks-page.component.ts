@@ -15,6 +15,10 @@ export class BookmarksPageComponent implements OnInit {
   constructor(private bmApi: BookmarkApiService) { }
 
   ngOnInit() {
+    this.getPeople()
+  }
+
+  getPeople(){
     this.bmApi.getBookmarks().subscribe(
       res => {
         for(let p of res){

@@ -22,6 +22,7 @@ export class NotificationService {
   }
 
   showNots(){
+    console.log('NOTI STARTED');
     this.notiSound.src = "../../assets/noti.mp3";
     this.notiSound.load();
 
@@ -36,7 +37,7 @@ export class NotificationService {
           ()=> {
             this.showNots()
           },
-          1000*60);
+        1000*30);
       },
       err => {
         console.log(err);
@@ -50,7 +51,7 @@ export class NotificationService {
       return false;
     }
     Notification.requestPermission();
-    let notification = new Notification('Woop Woop', {
+    let notification = new Notification(message, {
       icon: '../../assets/logo.png',
       body: message
     });

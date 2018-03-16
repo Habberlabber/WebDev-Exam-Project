@@ -36,9 +36,10 @@ export class VoteCardComponent implements OnInit {
   }
 
   like(id){
+        console.log("like");
     this.gameApi.vote(id, 1).subscribe(
       res => {
-        console.log(res);
+        console.log("like");
         this.vote.emit("next");
       },
       err => {
