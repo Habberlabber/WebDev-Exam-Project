@@ -21,7 +21,7 @@ export class MapPageComponent implements OnInit {
 
       for(let u of users){
         if(u.location){
-          let img = u.images ? 'http://localhost/WebDev-Exam-Project/Backend/src/images/' + u.images[0] : 'leaflet/marker-icon.png';
+          let img = u.images ? 'http://rednit.habberdesign.eu/src/images/' + u.images[0] : 'leaflet/marker-icon.png';
           let uMarker = marker([ u.location.lat, u.location.lon ], {
             icon: icon({
               iconSize: [ 50, 50 ],

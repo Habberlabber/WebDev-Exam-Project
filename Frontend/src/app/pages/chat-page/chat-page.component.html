@@ -7,7 +7,7 @@
       *ngFor="let chat of chats; let i = index" 
       style="cursor: pointer;"
       (click)="selectChat(chat.id)">
-      <img *ngIf="chat.user.images" class="uk-border-circle" [src]="'http://localhost/WebDev-Exam-Project/Backend/src/images/' + chat.user.images[0]" width="50" height="50" alt="Border circle">
+      <img *ngIf="chat.user.images" class="uk-border-circle" [src]="'http://rednit.habberdesign.eu/src/images/' + chat.user.images[0]" width="50" height="50" alt="Border circle">
       <img  *ngIf="!chat.user.images"  class="uk-border-circle" src="../../../assets/logo.png" width="50" height="50" alt="Border circle">
       <div class="uk-text-truncate uk-flex uk-flex-column uk-flex-center uk-margin-small-left">
         <b>{{chat.user.first_name}} {{chat.user.last_name}}</b>
@@ -25,7 +25,7 @@
           <img 
             *ngIf="currentUser.images"  
             class="uk-border-circle uk-margin-small-right uk-margin-small-left" 
-            [src]="'http://localhost/WebDev-Exam-Project/Backend/src/images/' + currentUser.images[0]" 
+            [src]="'http://rednit.habberdesign.eu/src/images/' + currentUser.images[0]" 
             width="40" height="40" alt="Border circle">
           <img 
             *ngIf="!currentUser.images"  
@@ -41,7 +41,7 @@
           <img 
             *ngIf="message.user.images"  
             class="uk-border-circle uk-margin-small-right uk-margin-small-left" 
-            [src]="'http://localhost/WebDev-Exam-Project/Backend/src/images/' + message.user.images[0]" 
+            [src]="'http://rednit.habberdesign.eu/src/images/' + message.user.images[0]" 
             width="40" height="40" alt="Border circle">
           <img 
             *ngIf="!message.user.images"  

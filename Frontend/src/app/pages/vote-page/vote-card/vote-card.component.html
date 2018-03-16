@@ -6,8 +6,8 @@
     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true; ratio: 1:1">
       <ul class="uk-slideshow-items" uk-lightbox="animation: slide">
         <li *ngFor="let image of person.images">
-          <a class="uk-inline uk-height-1-1 uk-width-1-1" [href]=" 'http://localhost/WebDev-Exam-Project/Backend/src/images/' + image ">
-            <img [src]=" 'http://localhost/WebDev-Exam-Project/Backend/src/images/' + image " alt="{{image}}" uk-cover>
+          <a class="uk-inline uk-height-1-1 uk-width-1-1" [href]=" 'http://rednit.habberdesign.eu/src/images/' + image ">
+            <img [src]=" 'http://rednit.habberdesign.eu/src/images/' + image " alt="{{image}}" uk-cover>
           </a>
           <div 
             *ngIf="image.title" 
