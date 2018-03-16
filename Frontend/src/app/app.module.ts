@@ -19,6 +19,7 @@ import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.co
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { SettingsFormComponent } from './pages/settings-page/settings-form/settings-form.component';
 import { ImageUploadComponent } from './pages/settings-page/image-upload/image-upload.component';
+import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ImageUploadComponent } from './pages/settings-page/image-upload/image-u
     BookmarksPageComponent,
     SettingsPageComponent,
     SettingsFormComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    ChatPageComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { SigninPageComponent } from './pages/signin-page/signin-page.component';
 import { VotePageComponent } from './pages/vote-page/vote-page.component';
 import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.component';
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 
 const routes: Routes = [
   { 
@@ -27,6 +28,10 @@ const routes: Routes = [
   { 
     path: 'settings',
     component: SettingsPageComponent
+  },
+  {
+    path: 'chat',
+    component: ChatPageComponent
   },
   {
     path: 'admin',
