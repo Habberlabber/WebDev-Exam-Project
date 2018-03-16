@@ -55,8 +55,19 @@ $app->post('/game/{voted_id}', function (Request $request, Response $response, a
   $voted_id = $args['voted_id'];
   $vote = $data['vote'];
 
+
   //$id = $_SESSION['user'];
   $id = 1;
+
+  $marks = getData('marks');
+
+  foreach ($marks as $key => $mark) {
+    if($mark->marker_id == $id && $mark->marked_id == $voted_id){
+      unset($marks->$key);
+      updateData('marks', $marks);
+      break;
+    }
+  }
 
   $voteObj = new stdClass();
   $voteObj->voter_id = $id;

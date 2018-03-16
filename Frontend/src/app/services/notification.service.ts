@@ -46,26 +46,18 @@ export class NotificationService {
 
   deskNoti(message){
     if (!Notification) {
-      console.log('Desktop notifications not available in your browser. Try Chromium.'); 
+      console.log('Desktop notifications not available in your browser.'); 
       return false;
     }
+    Notification.requestPermission();
+    let notification = new Notification('Woop Woop', {
+      icon: '../../assets/logo.png',
+      body: message
+    });
 
-    if (Notification.permission !== "granted"){
-      Notification.requestPermission();
-    }
-
-    if (Notification.permission !== "granted"){
-      Notification.requestPermission();
-    } else {
-      let notification = new Notification('Notification title', {
-        icon: '../../assets/logo.png',
-        body: message,
-      });
-
-      notification.onclick = function () {
-        window.open("http://google.com");      
-      };
-    }
+    notification.onclick = function () {
+      window.open("http://google.com");      
+    };
 
   }
 

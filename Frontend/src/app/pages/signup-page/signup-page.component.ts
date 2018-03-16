@@ -92,7 +92,7 @@ export class SignupPageComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(32)
       ])
-    )
+    ),
     gender: new FormControl(
       null,
       Validators.required         // Since this field only have one validator there is no need for the compose function
@@ -101,7 +101,7 @@ export class SignupPageComponent implements OnInit {
 
   ageValidator(control: FormControl) { 
     let bDay = control.value; 
-    let age = new Date(bDay);
+    let age:any = new Date(bDay);
     age = Date.now() - age;
     age = new Date(age);
     age = Math.abs(age.getUTCFullYear() - 1970);

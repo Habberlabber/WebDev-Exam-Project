@@ -24,7 +24,7 @@
           Conversations
         </a>
       </li>
-      <li routerLinkActive="uk-active">
+      <li routerLinkActive="uk-active" *ngIf="user?.user_type >= 2">
         <a routerLink="/bookmarks">
           <span class="uk-margin-small-right" uk-icon="icon: bookmark"></span>
           Bookmarks
@@ -36,20 +36,20 @@
           Settings
         </a>
       </li>
-      <li class="uk-nav-header">Administration</li>
-      <li routerLinkActive="uk-active">
+      <li class="uk-nav-header" *ngIf="user?.user_type >= 3" >Administration</li>
+      <li routerLinkActive="uk-active" *ngIf="user?.user_type >= 3" >
         <a routerLink="/admin/dashboard">
           <span class="uk-margin-small-right" uk-icon="icon: desktop"></span>
           Dashboard
         </a>
       </li>
-      <li routerLinkActive="uk-active">
+      <li routerLinkActive="uk-active" *ngIf="user?.user_type >= 3" >
         <a routerLink="/admin/users">
           <span class="uk-margin-small-right" uk-icon="icon: table"></span>
           User list
         </a>
       </li>
-      <li routerLinkActive="uk-active">
+      <li routerLinkActive="uk-active" *ngIf="user?.user_type >= 3" >
         <a routerLink="/admin/map">
           <span class="uk-margin-small-right" uk-icon="icon: location"></span>
           Map

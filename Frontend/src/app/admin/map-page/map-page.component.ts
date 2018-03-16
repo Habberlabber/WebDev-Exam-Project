@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { icon, latLng, marker, polyline, tileLayer, point } from 'leaflet';
+import * as L from 'leaflet';
 
 import { UserApiService } from '../../api-services/user-api.service';
 
@@ -32,7 +33,7 @@ export class MapPageComponent implements OnInit {
         }
       }
 
-      this.group = new L.featureGroup(this.userGroupArray);
+      this.group = L.featureGroup(this.userGroupArray);
 
       this.options = {
         layers: [ this.googleMaps, this.group ],

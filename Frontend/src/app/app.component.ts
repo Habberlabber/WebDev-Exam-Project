@@ -14,6 +14,9 @@ declare var UIkit: any;
   providers : [GeoLocationService, AuthApiService, NotificationService]
 })
 export class AppComponent implements OnInit {
+
+  user;
+
   constructor(
     private geoS: GeoLocationService,
     private notiS: NotificationService,
@@ -25,6 +28,11 @@ export class AppComponent implements OnInit {
     console.log('Test:');
     this.geoS.getCurrentLocation();
     this.notiS.showNots();
+    this.authApi.check().subscribe(
+      res => {
+        this.user = res;
+      }
+    );
   }
 
   doLogout(){
