@@ -14,9 +14,9 @@ require_once '../src/data.php';
 require_once '../src/validation.php';
 
 $app = new \Slim\App([
-    'settings' => [
-        'displayErrorDetails' => true
-    ]
+  'settings' => [
+    'displayErrorDetails' => true
+  ]
 ]);
 
 $app->options('/{routes:.+}', function ($request, $response, $args) {
@@ -29,12 +29,6 @@ $app->add(function ($req, $res, $next) {
             ->withHeader('Access-Control-Allow-Origin', '*')
             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-});
-
-$app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
-  $name = $args['name'];
-  $response->getBody()->write("Hello, $name");
-  return $response;
 });
 
 require_once '../src/routes/users.php';

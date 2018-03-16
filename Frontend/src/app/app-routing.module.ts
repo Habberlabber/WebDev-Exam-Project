@@ -8,6 +8,8 @@ import { BookmarksPageComponent } from './pages/bookmarks-page/bookmarks-page.co
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 
+import { AuthGuardService as AuthGuard } from './auth-guard.service';
+
 const routes: Routes = [
   { 
     path: 'signup',
@@ -19,24 +21,41 @@ const routes: Routes = [
   },
   { 
     path: 'play',
-    component: VotePageComponent
+    component: VotePageComponent, 
+    canActivate: [AuthGuard], 
+    data: { 
+      user_type: 0
+    } 
   },
   { 
     path: 'bookmarks',
-    component: BookmarksPageComponent
+    component: BookmarksPageComponent, 
+    canActivate: [AuthGuard], 
+    data: { 
+      user_type: 2
+    } 
   },
   { 
     path: 'settings',
-    component: SettingsPageComponent
+    component: SettingsPageComponent,
+    canActivate: [AuthGuard], 
+    data: { 
+      user_type: 0
+    } 
   },
   {
     path: 'chat',
-    component: ChatPageComponent
+    component: ChatPageComponent,
+    canActivate: [AuthGuard], 
+    data: { 
+      user_type: 1
+    } 
   },
   {
     path: 'admin',
     loadChildren: './admin/admin.module#AdminModule',
-    data: { preload: true }
+    canActivate: [AuthGuard], 
+    data: { preload: true, user_type: 3 }
    },
   { 
     path: '',

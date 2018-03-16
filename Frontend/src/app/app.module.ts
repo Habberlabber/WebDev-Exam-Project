@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ApiSettings } from './api-services/api-settings';
 import { UserApiService } from './api-services/user-api.service';
+import { AuthApiService } from './api-services/auth-api.service';
+import { AuthGuardService } from './auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
@@ -44,7 +46,7 @@ import { ChatComponent } from './pages/chat-page/chat/chat.component';
     LeafletModule.forRoot(),
     HttpClientModule
   ],
-  providers: [ApiSettings, UserApiService],
+  providers: [ApiSettings, UserApiService, AuthGuardService, AuthApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
