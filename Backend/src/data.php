@@ -36,7 +36,7 @@
     if($isJSON){
       $object->id = $id; // Set the id on the user-object
     }else{
-      $object['id'] = $id; // Set the id on the user-object
+      $object['id'] = $id; // Set the id on the user-object (that is actually an assosiative array)
     }
     $data->$id = $object; // Set the objecs with the new key to be the given object
     $data = json_encode($data); // Convert the array to string
